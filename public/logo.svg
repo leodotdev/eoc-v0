@@ -1,0 +1,8 @@
+<svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2"/>
+  <circle cx="30" cy="30" r="22" stroke="white" stroke-width="2"/>
+  <path d="M15 30C15 22.268 21.268 16 29 16H31C38.732 16 45 22.268 45 30C45 37.732 38.732 44 31 44H29C21.268 44 15 37.732 15 30Z" stroke="white" stroke-width="2"/>
+  <text x="60" y="25" font-family="Arial" font-size="10" fill="white">EVENTS & OFFICE</text>
+  <text x="60" y="40" font-family="Arial" font-size="10" fill="white">CONSULTANTS</text>
+</svg>
+
