@@ -7,7 +7,7 @@ export default function AboutPage() {
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container">
           <h1 className="text-3xl md:text-5xl font-bold mb-6">About Us</h1>
-          <div className="w-24 wavy-line-white mb-8"></div>
+          <div className="h-1 w-24 bg-white mb-8"></div>
           <p className="text-xl max-w-3xl">
             Events & Office Consultants is a woman-owned business that connects
             exceptional talent with extraordinary events.
@@ -21,7 +21,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <div className="w-16 wavy-line mb-8"></div>
+              <div className="h-1 w-16 bg-primary mb-8"></div>
               <div className="space-y-4 text-muted-foreground">
                 <p>
                   Since our founding, Events & Office Consultants has been
@@ -60,7 +60,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-6">Our Values</h2>
-          <div className="w-24 wavy-line mx-auto mb-16"></div>
+          <div className="h-1 w-24 bg-primary mx-auto mb-16"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-md shadow-sm">
@@ -95,7 +95,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-center mb-6">
             Our Leadership
           </h2>
-          <div className="w-24 wavy-line mx-auto mb-16"></div>
+          <div className="h-1 w-24 bg-primary mx-auto mb-16"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">

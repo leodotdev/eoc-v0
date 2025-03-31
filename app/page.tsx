@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import InstagramGallery from "@/components/instagram-gallery";
 
 export default function Home() {
   // Service categories
@@ -72,34 +73,6 @@ export default function Home() {
       author: "Rachel",
       company: "Makaira Co.",
       image: "/testimonials/person3.jpg",
-    },
-  ];
-
-  // Instagram posts (these would be fetched from Instagram API in production)
-  const instagramPosts = [
-    {
-      id: 1,
-      imageUrl: "https://placehold.co/300x300/black/white?text=EOC+Instagram+1",
-    },
-    {
-      id: 2,
-      imageUrl: "https://placehold.co/300x300/black/white?text=EOC+Instagram+2",
-    },
-    {
-      id: 3,
-      imageUrl: "https://placehold.co/300x300/black/white?text=EOC+Instagram+3",
-    },
-    {
-      id: 4,
-      imageUrl: "https://placehold.co/300x300/black/white?text=EOC+Instagram+4",
-    },
-    {
-      id: 5,
-      imageUrl: "https://placehold.co/300x300/black/white?text=EOC+Instagram+5",
-    },
-    {
-      id: 6,
-      imageUrl: "https://placehold.co/300x300/black/white?text=EOC+Instagram+6",
     },
   ];
 
@@ -255,30 +228,16 @@ export default function Home() {
           <Link
             href="https://www.instagram.com/eocpeople/"
             className="inline-flex items-center text-primary hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <Instagram className="h-5 w-5 mr-2" />
             @eocpeople
           </Link>
         </div>
 
-        <div className="container grid grid-cols-2 md:grid-cols-3 gap-4">
-          {instagramPosts.map((post) => (
-            <Link
-              key={post.id}
-              href="https://www.instagram.com/eocpeople/"
-              className="aspect-square relative overflow-hidden group"
-            >
-              <Image
-                src={post.imageUrl}
-                alt="Instagram post"
-                fill
-                className="object-cover transition-transform group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <Instagram className="h-8 w-8 text-white" />
-              </div>
-            </Link>
-          ))}
+        <div className="container">
+          <InstagramGallery />
         </div>
       </section>
     </main>

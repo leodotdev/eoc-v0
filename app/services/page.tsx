@@ -75,7 +75,7 @@ export default function ServicesPage() {
           <h1 className="text-3xl md:text-5xl font-bold mb-6">
             Our Services & Solutions
           </h1>
-          <div className="w-24 wavy-line-white mb-8"></div>
+          <div className="h-1 w-24 bg-white mb-8"></div>
           <p className="text-xl max-w-3xl">
             We provide comprehensive staffing solutions tailored to your
             specific needs.
@@ -86,7 +86,7 @@ export default function ServicesPage() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container text-center mb-16">
           <h2 className="section-heading">What We Offer</h2>
-          <div className="w-24 wavy-line mx-auto my-6"></div>
+          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Our woman-owned business is dedicated to providing exceptional
             talent for your events and office needs.
@@ -103,7 +103,7 @@ export default function ServicesPage() {
             >
               <div>
                 <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
-                <div className="w-16 wavy-line mb-6"></div>
+                <div className="h-1 w-16 bg-primary mb-6"></div>
                 <p className="text-lg text-muted-foreground mb-8">
                   {service.description}
                 </p>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
       <section className="py-16 md:py-20 bg-secondary">
         <div className="container text-center">
           <h2 className="section-heading">Ready to Get Started?</h2>
-          <div className="w-24 wavy-line mx-auto my-6"></div>
+          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground mb-8">
             Contact us today to discuss how we can provide tailored staffing
             solutions for your specific needs.
