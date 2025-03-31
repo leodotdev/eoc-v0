@@ -1,37 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./wave.css";
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 10 83% 76%;
-    --primary-foreground: 210 40% 98%;
+    /* EOC brand colors */
+    --primary: 0 0% 0%;  /* Black */
+    --primary-foreground: 0 0% 100%;  /* White */
 
-    --secondary: 160 20% 93%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 98%;  /* Light gray */
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
 
     --radius: 0.5rem;
   }
@@ -72,7 +72,37 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+/* Custom components */
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-heading {
+  @apply text-3xl md:text-4xl font-bold tracking-tight;
+}
+
+.section-subheading {
+  @apply text-xl md:text-2xl font-medium mt-2 text-muted-foreground;
+}
+
+.feature-item {
+  @apply flex flex-col items-center text-center p-4;
+}
+
+.feature-title {
+  @apply font-medium text-lg mt-4 mb-2;
+}
+
+.nav-link {
+  @apply transition-colors hover:text-primary/80;
+}
+
+.button-primary {
+  @apply bg-primary text-primary-foreground px-6 py-3 rounded font-medium transition-colors hover:bg-primary/90;
 }
 

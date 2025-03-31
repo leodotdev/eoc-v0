@@ -1,63 +1,134 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Facebook, Instagram, Mail } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-white py-8 wave-top pt-12">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <Link href="/">
-              <div className="w-[120px] h-[60px] relative">
-                <Image src="/logo.svg" alt="Events & Office Consultants" fill className="object-contain" />
-              </div>
-            </Link>
+    <footer className="bg-primary text-primary-foreground pt-16 pb-8">
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="space-y-4">
+            <div className="relative h-12 w-36 mb-4">
+              <Image
+                src="/eoc-logo.png"
+                alt="Events & Office Consultants"
+                fill
+                className="object-contain brightness-0 invert"
+              />
+            </div>
+            <p className="text-primary-foreground/80 max-w-xs">
+              Our woman-owned business has a singular mission: to connect
+              exceptional talent with extraordinary events.
+            </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-8">
-            <nav className="flex flex-col md:flex-row gap-6">
-              <Link href="/" className="hover:text-white/80 transition-colors">
+
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">
+              Events & Office Consultants
+            </h3>
+            <nav className="flex flex-col space-y-2">
+              <Link
+                href="/"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
                 Home
               </Link>
-              <Link href="/about" className="hover:text-white/80 transition-colors">
+              <Link
+                href="/about"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
                 About
               </Link>
-              <Link href="/services" className="hover:text-white/80 transition-colors">
-                Services & Solutions
-              </Link>
-              <Link href="/testimonials" className="hover:text-white/80 transition-colors">
-                Testimonials
-              </Link>
-              <Link href="/contact" className="hover:text-white/80 transition-colors">
+              <Link
+                href="/contact"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
                 Contact Us
               </Link>
-            </nav>
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <Link href="https://facebook.com" aria-label="Facebook" className="hover:text-white/80 transition-colors">
-                <Facebook className="h-5 w-5" />
+              <Link
+                href="/services"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Services
               </Link>
               <Link
-                href="https://instagram.com"
-                aria-label="Instagram"
-                className="hover:text-white/80 transition-colors"
+                href="/testimonials"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Testimonials
+              </Link>
+            </nav>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Contact</h3>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <Phone className="h-5 w-5" />
+                <span>305-442-6000</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="h-5 w-5" />
+                <span>info@eocpeople.com</span>
+              </div>
+            </div>
+            <div className="flex space-x-4 mt-4">
+              <Link
+                href="https://facebook.com"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                <Facebook className="h-5 w-5" />
+                <span className="sr-only">Facebook</span>
+              </Link>
+              <Link
+                href="https://instagram.com/eocpeople"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 <Instagram className="h-5 w-5" />
-              </Link>
-              <Link
-                href="mailto:info@eocpeople.com"
-                aria-label="Email"
-                className="hover:text-white/80 transition-colors"
-              >
-                <Mail className="h-5 w-5" />
+                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>
+
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Get in touch</h3>
+            <form className="space-y-3">
+              <Input
+                type="text"
+                placeholder="Name *"
+                className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Email *"
+                className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
+                required
+              />
+              <Textarea
+                placeholder="Comment or Message"
+                className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
+              />
+              <Button
+                type="submit"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              >
+                Submit
+              </Button>
+            </form>
+          </div>
         </div>
-        <div className="text-center mt-8">
-          <p>© {new Date().getFullYear()} Events & Office Consultants. All rights reserved.</p>
+
+        <div className="border-t border-primary-foreground/20 pt-8 text-center">
+          <p className="text-primary-foreground/60">
+            &copy; {new Date().getFullYear()} Events & Office Consultants. All
+            rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
