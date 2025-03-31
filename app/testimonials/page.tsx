@@ -57,7 +57,7 @@ export default function TestimonialsPage() {
           <h1 className="text-3xl md:text-5xl font-bold mb-6">
             What Our Clients Say
           </h1>
-          <div className="h-1 w-24 bg-white mb-8"></div>
+          <div className="w-24 wavy-line-white mb-8"></div>
           <p className="text-xl max-w-3xl">
             Our success is measured by the satisfaction of our clients and the
             exceptional experiences we create together.
@@ -105,7 +105,7 @@ export default function TestimonialsPage() {
       <section className="py-16 md:py-20 bg-secondary">
         <div className="container text-center">
           <h2 className="section-heading">Ready to work with us?</h2>
-          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
+          <div className="w-24 wavy-line mx-auto my-6"></div>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground mb-8">
             Let us help you find the perfect staff for your next event or office
             needs.
