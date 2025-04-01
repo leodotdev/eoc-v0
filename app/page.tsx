@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import InstagramGallery from "@/components/instagram-gallery";
+import { ViewTransitionLink } from "@/components/view-transition-link";
 
 export default function Home() {
   // Service categories
@@ -58,21 +59,18 @@ export default function Home() {
         "Working with Events & Office Consultants for numbers of years has provided us the staffing we need with confidence. They are very easy to work with and it has always been a pleasure working with them in Miami.",
       author: "Donna DeFrank",
       company: "INFORMA",
-      image: "/testimonials/person1.jpg",
     },
     {
       quote:
         "We've developed a great partnership with EOC. Listening is very important! The way you guys interpret our needs and make it seamless is much appreciated. Your responsiveness, flexibility and attention to detail is to be commended.",
       author: "Debbie",
       company: "National Marine Manufacturers Association (NMMA)",
-      image: "/testimonials/person2.jpg",
     },
     {
       quote:
         "EOC is our go-to Staffing Agency for professional and positive people to represent our clients! We love working with them.",
       author: "Rachel",
       company: "Makaira Co.",
-      image: "/testimonials/person3.jpg",
     },
   ];
 
@@ -107,7 +105,9 @@ export default function Home() {
               asChild
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 mt-4"
             >
-              <Link href="/contact">START HERE</Link>
+              <ViewTransitionLink href="/contact">
+                START HERE
+              </ViewTransitionLink>
             </Button>
           </div>
           <div className="relative h-[300px] md:h-[500px] rounded-md overflow-hidden">
@@ -173,25 +173,15 @@ export default function Home() {
         <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-secondary p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-semibold">{testimonial.author}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.company}
-                  </p>
-                </div>
-              </div>
-              <p className="italic text-muted-foreground">
+              <p className="italic text-muted-foreground mb-4">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <h4 className="font-semibold">{testimonial.author}</h4>
+                <p className="text-sm text-muted-foreground">
+                  {testimonial.company}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -222,12 +212,12 @@ export default function Home() {
 
       {/* Instagram Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container text-center mb-16">
+        <div className="container text-center mb-12">
           <h2 className="section-heading">Find us on Instagram</h2>
           <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
           <Link
             href="https://www.instagram.com/eocpeople/"
-            className="inline-flex items-center text-primary hover:underline"
+            className="inline-flex items-center text-primary hover:underline mb-6"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -238,6 +228,17 @@ export default function Home() {
 
         <div className="container">
           <InstagramGallery />
+          <div className="text-center mt-10">
+            <Link
+              href="https://www.instagram.com/eocpeople/"
+              className="inline-flex items-center px-6 py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className="h-5 w-5 mr-2" />
+              View More on Instagram
+            </Link>
+          </div>
         </div>
       </section>
     </main>

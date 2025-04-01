@@ -1,15 +1,93 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export function Footer() {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [formStatus, setFormStatus] = useState({
+    isSubmitting: false,
+    isSuccess: false,
+    isError: false,
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Reset status
+    setFormStatus({
+      isSubmitting: true,
+      isSuccess: false,
+      isError: false,
+      message: "",
+    });
+
+    try {
+      const formData = new FormData();
+      formData.append("name", formState.name);
+      formData.append("email", formState.email);
+      formData.append("message", formState.message);
+      formData.append("source", "Footer Form");
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormStatus({
+          isSubmitting: false,
+          isSuccess: true,
+          isError: false,
+          message: "Thank you for your message!",
+        });
+
+        // Reset form on success
+        setFormState({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        throw new Error(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message: "Failed to send message. Please try again.",
+      });
+    }
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           <div className="space-y-4">
             <div className="relative h-12 w-36 mb-4">
               <Image
@@ -49,16 +127,40 @@ export function Footer() {
                 Contact Us
               </Link>
               <Link
-                href="/services"
-                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-              >
-                Services
-              </Link>
-              <Link
                 href="/testimonials"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 Testimonials
+              </Link>
+            </nav>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Our Services</h3>
+            <nav className="flex flex-col space-y-2">
+              <Link
+                href="/services"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                All Services
+              </Link>
+              <Link
+                href="/services/conventions-events"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Conventions & Events
+              </Link>
+              <Link
+                href="/services/brand-ambassadors"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Brand Ambassadors
+              </Link>
+              <Link
+                href="/services/administrative-professionals"
+                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Administrative Professionals
               </Link>
             </nav>
           </div>
@@ -95,28 +197,48 @@ export function Footer() {
 
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Get in touch</h3>
-            <form className="space-y-3">
+            {formStatus.isSuccess && (
+              <Alert className="bg-green-800/20 border-green-800/30 text-white">
+                <AlertDescription>{formStatus.message}</AlertDescription>
+              </Alert>
+            )}
+            {formStatus.isError && (
+              <Alert className="bg-red-800/20 border-red-800/30 text-white">
+                <AlertDescription>{formStatus.message}</AlertDescription>
+              </Alert>
+            )}
+            <form className="space-y-3" onSubmit={handleSubmit}>
               <Input
+                name="name"
                 type="text"
                 placeholder="Name *"
                 className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
                 required
+                value={formState.name}
+                onChange={handleChange}
               />
               <Input
+                name="email"
                 type="email"
                 placeholder="Email *"
                 className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
                 required
+                value={formState.email}
+                onChange={handleChange}
               />
               <Textarea
+                name="message"
                 placeholder="Comment or Message"
                 className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
+                value={formState.message}
+                onChange={handleChange}
               />
               <Button
                 type="submit"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                disabled={formStatus.isSubmitting}
               >
-                Submit
+                {formStatus.isSubmitting ? "Sending..." : "Submit"}
               </Button>
             </form>
           </div>
