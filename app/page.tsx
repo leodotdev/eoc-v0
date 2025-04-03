@@ -15,12 +15,32 @@ export default function Home() {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const videoId = "sKw_ZBs08AU";
   const [origin, setOrigin] = useState("");
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     setOrigin(window.location.origin);
-    // Set video as ready after a short delay to allow the iframe to load
-    const timer = setTimeout(() => setIsVideoReady(true), 1000);
-    return () => clearTimeout(timer);
+
+    // First set a short timeout to quickly show content if video loads fast
+    const quickTimer = setTimeout(() => setIsVideoReady(true), 1000);
+
+    // Add a failsafe timeout to ensure content always shows even if video has issues
+    const failsafeTimer = setTimeout(() => {
+      setIsVideoReady(true);
+      // If we're using the failsafe timer, assume there might be video issues
+      setVideoError(true);
+    }, 3000);
+
+    // Add event listener for when iframe loads
+    const handleIframeLoad = () => {
+      setIsVideoReady(true);
+      clearTimeout(failsafeTimer);
+    };
+
+    // Clean up timers on unmount
+    return () => {
+      clearTimeout(quickTimer);
+      clearTimeout(failsafeTimer);
+    };
   }, []);
 
   // Service categories
@@ -112,7 +132,7 @@ export default function Home() {
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div className="relative w-full h-full blur-[24px]">
-            {origin && (
+            {origin && !videoError ? (
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}&enablejsapi=0&origin=${encodeURIComponent(
                   origin
@@ -122,7 +142,15 @@ export default function Home() {
                 loading="lazy"
                 title="Background video"
                 referrerPolicy="no-referrer-when-downgrade"
+                onLoad={() => setIsVideoReady(true)}
+                onError={() => {
+                  setIsVideoReady(true);
+                  setVideoError(true);
+                }}
               />
+            ) : (
+              // Fallback background
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background/90"></div>
             )}
           </div>
           {/* Dark overlay for better text readability */}

@@ -83,7 +83,7 @@ export default function RootLayout({
         />
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube-nocookie.com"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube-nocookie.com"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
