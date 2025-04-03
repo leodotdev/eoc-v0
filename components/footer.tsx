@@ -89,7 +89,7 @@ export function Footer() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           <div className="flex flex-col gap-4">
-            <div className="relative h-12 w-36">
+            <div className="relative h-16 w-48">
               <Image
                 src="/eoc-logo.png"
                 alt="Events & Office Consultants"
@@ -171,6 +171,8 @@ export function Footer() {
               <Link
                 href="tel:305-442-6000"
                 className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Phone className="h-5 w-5" />
                 <span>305-442-6000</span>
@@ -178,6 +180,8 @@ export function Footer() {
               <Link
                 href="mailto:info@eocpeople.com"
                 className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Mail className="h-5 w-5" />
                 <span>info@eocpeople.com</span>
@@ -187,6 +191,8 @@ export function Footer() {
               <Link
                 href="https://facebook.com"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -194,6 +200,8 @@ export function Footer() {
               <Link
                 href="https://instagram.com/eocpeople"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
