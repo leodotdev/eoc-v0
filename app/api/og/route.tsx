@@ -27,7 +27,6 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "12px",
             }}
           >
             <img
@@ -46,28 +45,12 @@ export async function GET(req: NextRequest) {
               fontSize: 64,
               fontStyle: "normal",
               color: "white",
-              marginTop: "12px",
               padding: "0 120px",
               textAlign: "center",
               fontWeight: 600,
-              textShadow: "0 2px 4px rgba(0,0,0,0.1)",
             }}
           >
             {title}
-          </div>
-          <div
-            style={{
-              fontSize: 32,
-              fontStyle: "normal",
-              color: "white",
-              marginTop: "12px",
-              padding: "0 120px",
-              textAlign: "center",
-              opacity: 0.9,
-              textShadow: "0 1px 2px rgba(0,0,0,0.1)",
-            }}
-          >
-            Personalized Staffing Experience
           </div>
         </div>
       ),
