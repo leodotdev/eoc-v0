@@ -17,12 +17,12 @@ export function TestimonialCard({
   return (
     <div
       className={cn(
-        "group relative flex flex-col bg-card rounded-xl p-6 shadow-sm transition-all duration-300 hover:shadow-md",
+        "relative flex flex-col bg-card rounded-xl p-6 shadow-sm",
         className
       )}
     >
       {/* Decorative gradient background */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent" />
 
       {/* Content */}
       <div className="relative">
