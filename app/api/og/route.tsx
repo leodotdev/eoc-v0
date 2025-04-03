@@ -18,9 +18,8 @@ export async function GET(req: NextRequest) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#1a1a1a",
-            backgroundImage:
-              "linear-gradient(to bottom right, #1a1a1a, #2a2a2a)",
+            backgroundColor: "#F3978A",
+            backgroundImage: "linear-gradient(135deg, #F3978A, #f5a799)",
           }}
         >
           <div
@@ -28,42 +27,44 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              marginBottom: "40px",
             }}
           >
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="120"
-              height="120"
-              style={{ marginRight: "20px" }}
+              width="200"
+              height="200"
+              style={{
+                objectFit: "contain",
+              }}
             />
           </div>
           <div
             style={{
               display: "flex",
-              fontSize: 60,
+              fontSize: 64,
               fontStyle: "normal",
-              color: "transparent",
+              color: "white",
               marginTop: "20px",
               padding: "0 120px",
               textAlign: "center",
-              backgroundImage:
-                "linear-gradient(to bottom right, #ffffff, #cccccc)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
+              fontWeight: 600,
+              textShadow: "0 2px 4px rgba(0,0,0,0.1)",
             }}
           >
             {title}
           </div>
           <div
             style={{
-              fontSize: 30,
+              fontSize: 32,
               fontStyle: "normal",
-              color: "#cccccc",
+              color: "white",
               marginTop: "20px",
               padding: "0 120px",
               textAlign: "center",
+              opacity: 0.9,
+              textShadow: "0 1px 2px rgba(0,0,0,0.1)",
             }}
           >
             Personalized Staffing Experience
