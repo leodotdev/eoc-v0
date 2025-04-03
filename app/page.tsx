@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import InstagramGallery from "@/components/instagram-gallery";
 import { ViewTransitionLink } from "@/components/view-transition-link";
 import { ClientLogos } from "@/components/client-logos";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TestimonialCard } from "@/components/testimonial-card";
 
 declare global {
@@ -19,6 +19,7 @@ declare global {
 
 export default function Home() {
   const playerRef = useRef<any>(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
     // Load the IFrame Player API code asynchronously
@@ -53,6 +54,7 @@ export default function Home() {
             console.log("Player ready");
             event.target.setPlaybackRate(0.5);
             event.target.playVideo();
+            setIsVideoReady(true);
           },
           onStateChange: (event: any) => {
             // When video starts playing or buffers, set playback rate
@@ -66,6 +68,8 @@ export default function Home() {
           },
           onError: (event: any) => {
             console.error("YouTube player error:", event.data);
+            // In case of error, show the content anyway
+            setIsVideoReady(true);
           },
         },
       });
@@ -169,7 +173,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background min-h-[80vh] flex items-center">
         {/* Video Background */}
@@ -184,10 +188,24 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
+        {/* Loading Overlay */}
+        {!isVideoReady && (
+          <div className="absolute inset-0 z-20 bg-background flex items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+              <p className="text-muted-foreground animate-pulse">Loading...</p>
+            </div>
+          </div>
+        )}
+
         {/* Hero Content */}
-        <div className="container relative z-10 py-24 md:py-32">
-          <div className="mx-auto max-w-[1200px] text-white">
-            <h1 className="mb-8 text-center">
+        <div
+          className={`container relative z-10 py-24 md:py-32 transition-opacity duration-500 ${
+            isVideoReady ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div className="mx-auto max-w-[1200px] text-white flex flex-col items-center">
+            <h1 className="text-center">
               <span className="block text-4xl font-bold tracking-tight md:text-7xl lg:text-8xl">
                 Your favorite
               </span>
@@ -195,17 +213,20 @@ export default function Home() {
                 staffing partner.
               </span>
             </h1>
-            <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-white/90 md:text-xl lg:text-2xl">
+            <p className="max-w-2xl text-center text-lg text-white/90 md:text-xl lg:text-2xl mt-8">
               We connect exceptional talent with extraordinary events.
               Experience seamless staffing solutions that bring your vision to
               life.
             </p>
 
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+            <div className="flex flex-col sm:flex-row items-center gap-6 mt-12">
               <Link href="/contact">
-                <Button size="lg" className="h-14 px-8 text-lg">
+                <Button
+                  size="lg"
+                  className="h-14 px-8 text-lg flex items-center gap-2"
+                >
                   Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/services">
@@ -224,40 +245,46 @@ export default function Home() {
 
       {/* Client Logos Section */}
       <section className="py-16 bg-white">
-        <div className="container text-center">
+        <div className="container">
           <ClientLogos />
         </div>
       </section>
 
       {/* What We Do Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container text-center mb-16">
-          <h2 className="section-heading">What we do</h2>
-          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
-          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Our woman-owned business has a singular mission: to connect
-            exceptional talent with extraordinary events.
-          </p>
-        </div>
+        <div className="container flex flex-col items-center">
+          <div className="flex flex-col items-center max-w-2xl text-center">
+            <h2 className="text-3xl md:text-4xl font-bold">What we do</h2>
+            <div className="h-1 w-24 bg-primary my-6"></div>
+            <p className="text-lg text-muted-foreground">
+              Our woman-owned business has a singular mission: to connect
+              exceptional talent with extraordinary events.
+            </p>
+          </div>
 
-        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <ViewTransitionLink
-              key={index}
-              href={service.link}
-              className="group bg-secondary rounded-lg p-6 text-center flex flex-col items-center transition-colors hover:bg-secondary/80"
-            >
-              <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                <span className="text-2xl font-bold">{index + 1}</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-muted-foreground">{service.description}</p>
-              <div className="mt-4 text-primary flex items-center gap-1 text-sm font-medium group-hover:underline">
-                Learn More
-                <ArrowRight className="h-4 w-4" />
-              </div>
-            </ViewTransitionLink>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mt-16">
+            {services.map((service, index) => (
+              <ViewTransitionLink
+                key={index}
+                href={service.link}
+                className="group bg-secondary rounded-lg p-6 flex flex-col items-center transition-colors hover:bg-secondary/80"
+              >
+                <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold">{index + 1}</span>
+                </div>
+                <h3 className="text-xl font-semibold mt-4 text-center">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground mt-2 text-center">
+                  {service.description}
+                </p>
+                <div className="mt-4 text-primary flex items-center gap-1 text-sm font-medium group-hover:underline">
+                  Learn More
+                  <ArrowRight className="h-4 w-4" />
+                </div>
+              </ViewTransitionLink>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -265,11 +292,14 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="feature-item">
+            <div
+              key={index}
+              className="flex flex-col gap-4 items-center text-center"
+            >
               <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center">
                 <Check className="h-6 w-6" />
               </div>
-              <h3 className="feature-title">{feature.title}</h3>
+              <h3 className="text-xl font-semibold">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}
@@ -278,13 +308,15 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container text-center mb-16">
-          <h2 className="section-heading">What our clients say</h2>
-          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
-        </div>
+        <div className="container flex flex-col items-center">
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              What our clients say
+            </h2>
+            <div className="h-1 w-24 bg-primary my-6"></div>
+          </div>
 
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-16">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
@@ -295,7 +327,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="mt-12">
             <ViewTransitionLink
               href="/testimonials"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
@@ -309,35 +341,39 @@ export default function Home() {
 
       {/* Instagram Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container text-center mb-12">
-          <h2 className="section-heading">Find us on Instagram</h2>
-          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
-          <Link
-            href="https://www.instagram.com/eocpeople/"
-            className="inline-flex items-center text-primary hover:underline mb-6"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className="h-5 w-5 mr-2" />
-            @eocpeople
-          </Link>
-        </div>
-
-        <div className="container">
-          <InstagramGallery />
-          <div className="text-center mt-10">
+        <div className="container flex flex-col items-center">
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Find us on Instagram
+            </h2>
+            <div className="h-1 w-24 bg-primary my-6"></div>
             <Link
               href="https://www.instagram.com/eocpeople/"
-              className="inline-flex items-center px-6 py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 text-primary hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Instagram className="h-5 w-5 mr-2" />
-              View More on Instagram
+              <Instagram className="h-5 w-5" />
+              @eocpeople
             </Link>
+          </div>
+
+          <div className="w-full mt-12">
+            <InstagramGallery />
+            <div className="flex justify-center mt-10">
+              <Link
+                href="https://www.instagram.com/eocpeople/"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram className="h-5 w-5" />
+                View More on Instagram
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
