@@ -18,9 +18,8 @@ export async function GET(req: NextRequest) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#1a1a1a",
-            backgroundImage:
-              "linear-gradient(to bottom right, #1a1a1a, #2a2a2a)",
+            backgroundColor: "#F3978A",
+            backgroundImage: "linear-gradient(135deg, #F3978A, #f5a99e)",
           }}
         >
           <div
@@ -28,14 +27,17 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              marginBottom: "40px",
             }}
           >
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="600"
-              height="600"
+              width="200"
+              height="200"
+              style={{
+                objectFit: "contain",
+              }}
             />
           </div>
           <div
@@ -43,23 +45,20 @@ export async function GET(req: NextRequest) {
               display: "flex",
               fontSize: 60,
               fontStyle: "normal",
-              color: "transparent",
+              color: "white",
               marginTop: "20px",
               padding: "0 120px",
               textAlign: "center",
-              backgroundImage:
-                "linear-gradient(to bottom right, #ffffff, #cccccc)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
+              fontWeight: 600,
             }}
           >
             {title}
           </div>
           <div
             style={{
-              fontSize: 30,
+              fontSize: 32,
               fontStyle: "normal",
-              color: "#cccccc",
+              color: "rgba(255, 255, 255, 0.9)",
               marginTop: "20px",
               padding: "0 120px",
               textAlign: "center",
