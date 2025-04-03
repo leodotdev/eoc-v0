@@ -7,88 +7,12 @@ import { Button } from "@/components/ui/button";
 import InstagramGallery from "@/components/instagram-gallery";
 import { ViewTransitionLink } from "@/components/view-transition-link";
 import { ClientLogos } from "@/components/client-logos";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { TestimonialCard } from "@/components/testimonial-card";
-
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
+import { YouTubeLite } from "@/components/youtube-lite";
 
 export default function Home() {
-  const playerRef = useRef<any>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
-
-  useEffect(() => {
-    // Load the IFrame Player API code asynchronously
-    const loadYouTubeAPI = () => {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-    };
-
-    // Function to handle player initialization
-    const initializePlayer = () => {
-      playerRef.current = new window.YT.Player("hero-video", {
-        height: "100%",
-        width: "100%",
-        videoId: "sKw_ZBs08AU",
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          disablekb: 1,
-          enablejsapi: 1,
-          loop: 1,
-          modestbranding: 1,
-          mute: 1,
-          playsinline: 1,
-          rel: 0,
-          playlist: "sKw_ZBs08AU",
-          origin: window.location.origin,
-        },
-        events: {
-          onReady: (event: any) => {
-            console.log("Player ready");
-            event.target.setPlaybackRate(0.5);
-            event.target.playVideo();
-            setIsVideoReady(true);
-          },
-          onStateChange: (event: any) => {
-            // When video starts playing or buffers, set playback rate
-            if (
-              event.data === window.YT.PlayerState.PLAYING ||
-              event.data === window.YT.PlayerState.BUFFERING
-            ) {
-              console.log("Setting playback rate");
-              event.target.setPlaybackRate(0.5);
-            }
-          },
-          onError: (event: any) => {
-            console.error("YouTube player error:", event.data);
-            // In case of error, show the content anyway
-            setIsVideoReady(true);
-          },
-        },
-      });
-    };
-
-    // Set up the YouTube API callback
-    if (window.YT) {
-      initializePlayer();
-    } else {
-      window.onYouTubeIframeAPIReady = initializePlayer;
-      loadYouTubeAPI();
-    }
-
-    return () => {
-      if (playerRef.current) {
-        playerRef.current.destroy();
-      }
-    };
-  }, []);
 
   // Service categories
   const services = [
@@ -179,9 +103,12 @@ export default function Home() {
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div className="relative w-full h-full blur-[24px]">
-            <div
-              id="hero-video"
+            <YouTubeLite
+              videoId="sKw_ZBs08AU"
               className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              autoplay={true}
+              playbackRate={0.5}
+              onReady={() => setIsVideoReady(true)}
             />
           </div>
           {/* Dark overlay for better text readability */}
