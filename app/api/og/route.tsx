@@ -3,8 +3,26 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+// Loading Inter font
+const interRegular = fetch(
+  new URL(
+    "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
+  )
+).then((res) => res.arrayBuffer());
+
+const interSemiBold = fetch(
+  new URL(
+    "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiJ-Ek-_EeA.woff2"
+  )
+).then((res) => res.arrayBuffer());
+
 export async function GET(req: NextRequest) {
   try {
+    const [interRegularData, interSemiBoldData] = await Promise.all([
+      interRegular,
+      interSemiBold,
+    ]);
+
     const { searchParams } = new URL(req.url);
     const title = searchParams.get("title") || "Events & Office Consultants";
 
@@ -20,8 +38,9 @@ export async function GET(req: NextRequest) {
             justifyContent: "center",
             backgroundColor: "#F3978A",
             backgroundImage: "linear-gradient(135deg, #F3978A, #f5a99e)",
-            gap: "16px",
+            gap: "32px",
             padding: "64px",
+            fontFamily: "Inter",
           }}
         >
           <div
@@ -34,8 +53,8 @@ export async function GET(req: NextRequest) {
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="400"
-              height="400"
+              width="300"
+              height="300"
               style={{
                 objectFit: "contain",
               }}
@@ -53,11 +72,11 @@ export async function GET(req: NextRequest) {
               style={{
                 display: "flex",
                 fontSize: 60,
-                fontStyle: "normal",
                 color: "white",
                 textAlign: "center",
                 fontWeight: 600,
                 maxWidth: "900px",
+                letterSpacing: "-0.02em",
               }}
             >
               {title}
@@ -65,9 +84,9 @@ export async function GET(req: NextRequest) {
             <div
               style={{
                 fontSize: 32,
-                fontStyle: "normal",
                 color: "rgba(255, 255, 255, 0.9)",
                 textAlign: "center",
+                letterSpacing: "-0.01em",
               }}
             >
               Personalized Staffing Experience
@@ -78,6 +97,20 @@ export async function GET(req: NextRequest) {
       {
         width: 1200,
         height: 630,
+        fonts: [
+          {
+            name: "Inter",
+            data: interRegularData,
+            weight: 400,
+            style: "normal",
+          },
+          {
+            name: "Inter",
+            data: interSemiBoldData,
+            weight: 600,
+            style: "normal",
+          },
+        ],
       }
     );
   } catch (e: any) {
