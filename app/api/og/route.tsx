@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              marginBottom: "10px",
             }}
           >
             <img
@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
               fontSize: 60,
               fontStyle: "normal",
               color: "white",
-              marginTop: "20px",
+              marginTop: "10px",
               padding: "0 120px",
               textAlign: "center",
               fontWeight: 600,
@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
               fontSize: 32,
               fontStyle: "normal",
               color: "rgba(255, 255, 255, 0.9)",
-              marginTop: "20px",
+              marginTop: "10px",
               padding: "0 120px",
               textAlign: "center",
             }}
