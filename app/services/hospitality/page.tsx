@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ViewTransitionLink } from "@/components/view-transition-link";
 import { BreadcrumbNav } from "@/components/breadcrumb";
 
-export default function AdministrativeProfessionalsPage() {
+export default function HospitalityPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
@@ -14,19 +14,18 @@ export default function AdministrativeProfessionalsPage() {
               items={[
                 { label: "Services & Solutions", href: "/services" },
                 {
-                  label: "Administrative Professionals",
-                  href: "/services/administrative-professionals",
+                  label: "Hospitality",
+                  href: "/services/hospitality",
                   isCurrent: true,
                 },
               ]}
             />
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">
-            Administrative Professionals
-          </h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-6">Hospitality</h1>
           <div className="h-1 w-24 bg-white mb-8"></div>
           <p className="text-xl max-w-3xl">
-            For teams who need skilled talent and easy integration.
+            For professionals who are looking for exceptional guest experiences
+            and top-tier hospitality staffing solutions.
           </p>
         </div>
       </section>
@@ -42,29 +41,28 @@ export default function AdministrativeProfessionalsPage() {
               <div className="h-1 w-16 bg-primary mb-8"></div>
               <div className="space-y-6 text-muted-foreground">
                 <p className="text-lg">
-                  We know that the backbone of any successful event or office
-                  operation is a team of skilled administrative professionals.
-                  Our carefully vetted talent pool includes experienced
-                  administrative assistants, office managers, and executive
-                  support staff who excel in organization, communication, and
-                  multitasking.
+                  In the dynamic world of hospitality, exceptional service is
+                  not just an expectation—it's a necessity. We specialize in
+                  providing top-tier hospitality professionals who understand
+                  the art of creating memorable guest experiences. From luxury
+                  hotels and resorts to high-end restaurants and exclusive
+                  venues, our staff brings the perfect blend of professionalism,
+                  attention to detail, and warm hospitality.
                 </p>
                 <p className="text-lg">
-                  Whether you need temporary support for a busy season,
-                  specialized assistance for a high-stakes project, or long-term
-                  staffing solutions, we provide professionals who are not only
-                  highly capable but also aligned with your company's culture
-                  and goals. From managing schedules and coordinating logistics
-                  to handling critical office operations, our administrative
-                  professionals ensure your business runs smoothly and
-                  efficiently.
+                  Our hospitality professionals are carefully selected for their
+                  experience, expertise, and dedication to service excellence.
+                  Whether you need front desk staff, concierge services, food
+                  and beverage professionals, or event hospitality teams, we
+                  ensure each member of our team upholds the highest standards
+                  of guest service and operational efficiency.
                 </p>
                 <p className="text-lg">
-                  We pride ourselves on delivering personalized staffing
-                  solutions tailored to your unique needs. Whether you're
-                  preparing for a major event, expanding your team, or simply
-                  need reliable support to keep day-to-day operations on track,
-                  Events & Office Consultants is here to help.
+                  With our deep understanding of the hospitality industry and
+                  commitment to excellence, we help you deliver exceptional
+                  experiences that keep your guests coming back. Let us be your
+                  partner in creating unforgettable moments and maintaining the
+                  highest standards of hospitality service.
                 </p>
                 <div className="pt-6">
                   <ViewTransitionLink
@@ -78,8 +76,8 @@ export default function AdministrativeProfessionalsPage() {
             </div>
             <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden">
               <Image
-                src="/admin-professionals.png"
-                alt="Administrative Professionals"
+                src="/hospitality.png"
+                alt="Hospitality Services"
                 fill
                 className="object-cover"
               />
@@ -124,15 +122,14 @@ export default function AdministrativeProfessionalsPage() {
               <p className="text-primary group-hover:underline">Learn More →</p>
             </ViewTransitionLink>
             <ViewTransitionLink
-              href="/services/hospitality"
+              href="/services/administrative-professionals"
               className="bg-white p-8 group rounded-lg shadow-sm"
             >
               <h3 className="text-xl font-semibold mb-4 text-primary">
-                Hospitality
+                Administrative Professionals
               </h3>
               <p className="text-muted-foreground mb-6">
-                For professionals who are looking for exceptional guest
-                experiences and top-tier hospitality staffing solutions.
+                For teams who need skilled talent and easy integration.
               </p>
               <p className="text-primary group-hover:underline">Learn More →</p>
             </ViewTransitionLink>
