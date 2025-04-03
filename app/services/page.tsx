@@ -183,8 +183,14 @@ export default function ServicesPage() {
           </div>
 
           <p className="text-center text-lg font-medium">
-            Don't see what you're looking for? Get in touch with our team for a
-            look at our bespoke options!
+            Don't see what you're looking for?{" "}
+            <ViewTransitionLink
+              href="/contact"
+              className="text-primary hover:text-primary/80"
+            >
+              Get in touch
+            </ViewTransitionLink>{" "}
+            with our team for a look at our bespoke options!
           </p>
         </div>
       </section>
