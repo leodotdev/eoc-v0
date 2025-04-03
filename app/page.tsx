@@ -18,28 +18,15 @@ export default function Home() {
   const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
+    // Set origin for YouTube embed
     setOrigin(window.location.origin);
 
-    // First set a short timeout to quickly show content if video loads fast
-    const quickTimer = setTimeout(() => setIsVideoReady(true), 1000);
+    // Show content immediately - don't wait for video
+    setIsVideoReady(true);
 
-    // Add a failsafe timeout to ensure content always shows even if video has issues
-    const failsafeTimer = setTimeout(() => {
-      setIsVideoReady(true);
-      // If we're using the failsafe timer, assume there might be video issues
-      setVideoError(true);
-    }, 3000);
-
-    // Add event listener for when iframe loads
-    const handleIframeLoad = () => {
-      setIsVideoReady(true);
-      clearTimeout(failsafeTimer);
-    };
-
-    // Clean up timers on unmount
+    // Set up cleanup function
     return () => {
-      clearTimeout(quickTimer);
-      clearTimeout(failsafeTimer);
+      // Cleanup if needed
     };
   }, []);
 
@@ -132,12 +119,14 @@ export default function Home() {
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div className="relative w-full h-full blur-[24px]">
-            {origin && !videoError ? (
+            {/* Use the fallback background always, with the video as an enhancement */}
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background/90 z-0"></div>
+
+            {/* YouTube video as enhancement */}
+            {origin && !videoError && (
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}&enablejsapi=0&origin=${encodeURIComponent(
-                  origin
-                )}&nocookie=1`}
-                className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}`}
+                className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 loading="lazy"
                 title="Background video"
@@ -148,16 +137,13 @@ export default function Home() {
                   setVideoError(true);
                 }}
               />
-            ) : (
-              // Fallback background
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-background/90"></div>
             )}
           </div>
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
-        {/* Loading Overlay */}
+        {/* Loading Overlay - only show briefly */}
         {!isVideoReady && (
           <div className="absolute inset-0 z-20 bg-background flex items-center justify-center">
             <div className="flex flex-col items-center gap-4">
