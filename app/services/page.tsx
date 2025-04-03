@@ -156,6 +156,10 @@ export default function ServicesPage() {
                     alt={service.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    quality={90}
+                    priority={index === 0}
                   />
                 </div>
               </div>

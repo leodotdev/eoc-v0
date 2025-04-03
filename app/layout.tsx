@@ -4,13 +4,21 @@ import { Inter } from "next/font/google";
 import { NavBar } from "@/components/nav-bar";
 import { Footer } from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
 
 export const metadata = {
   title: "Events & Office Consultants - Personalized Staffing Experience",
   description:
     "We connect exceptional talent with extraordinary events. Our woman-owned business provides personalized staffing solutions for businesses and organizations.",
   generator: "v0.dev",
+  metadataBase: new URL("https://eoc-v0.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Events & Office Consultants - Personalized Staffing Experience",
     description:
@@ -52,6 +60,9 @@ export const metadata = {
     shortcut: "/eoc-logo.png",
     apple: "/eoc-logo.png",
   },
+  verification: {
+    google: "your-google-site-verification", // Add your Google verification code
+  },
 };
 
 export default function RootLayout({
@@ -60,8 +71,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} flex min-h-screen flex-col`}>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      </head>
+      <body
+        className={`${inter.className} flex min-h-screen flex-col antialiased`}
+      >
         <NavBar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />

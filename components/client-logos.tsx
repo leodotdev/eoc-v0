@@ -78,7 +78,9 @@ export function ClientLogos({ className }: ClientLogosProps) {
                     alt={client.name}
                     fill
                     className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                    sizes="(max-width: 640px) 180px, (max-width: 1024px) 180px, 180px"
+                    loading="lazy"
+                    quality={85}
                   />
                 </div>
               </div>

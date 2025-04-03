@@ -47,6 +47,8 @@ export function NavBar() {
                 fill
                 className="object-contain brightness-0 invert"
                 priority
+                sizes="(max-width: 768px) 192px, 192px"
+                quality={90}
               />
             </div>
           </ViewTransitionLink>
@@ -174,6 +176,9 @@ export function NavBar() {
                   alt="Events & Office Consultants"
                   fill
                   className="object-contain brightness-0 invert"
+                  priority
+                  sizes="(max-width: 768px) 192px, 192px"
+                  quality={90}
                 />
               </div>
               <nav className="flex flex-col gap-6">
