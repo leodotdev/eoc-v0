@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ViewTransitionLink } from "@/components/view-transition-link";
 import { BreadcrumbNav } from "@/components/breadcrumb";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 
 export default function ServicesPage() {
   // Service categories
@@ -142,9 +142,10 @@ export default function ServicesPage() {
                   </p>
                   <ViewTransitionLink
                     href={service.link}
-                    className="button-primary"
+                    className="button-primary inline-flex items-center gap-2"
                   >
                     Learn More
+                    <ArrowRight className="h-5 w-5" />
                   </ViewTransitionLink>
                 </div>
                 <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-md">
