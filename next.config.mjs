@@ -27,13 +27,30 @@ const nextConfig = {
     viewTransition: true,
     optimizeCss: {
       enabled: true,
+      cssModules: true,
+      pruning: true,
     },
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: [
+      'lucide-react',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-popover',
+      'recharts',
+    ],
+    turbo: {
+      rules: {
+        '*.svg': ['@svgr/webpack'],
+      },
+    },
+    scrollRestoration: true,
+    optimizeServerReact: true,
   },
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   headers: async () => {
     return [
       {
