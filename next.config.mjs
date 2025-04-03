@@ -25,7 +25,9 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
     viewTransition: true,
-    optimizeCss: true,
+    optimizeCss: {
+      enabled: true,
+    },
     optimizePackageImports: ['lucide-react'],
   },
   compress: true,
