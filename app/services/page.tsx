@@ -142,13 +142,15 @@ export default function ServicesPage() {
                   <p className="text-lg text-muted-foreground">
                     {service.description}
                   </p>
-                  <ViewTransitionLink
-                    href={service.link}
-                    className="button-primary inline-flex items-center gap-2"
-                  >
-                    Learn More
-                    <ArrowRight className="h-5 w-5" />
-                  </ViewTransitionLink>
+                  <div className="flex">
+                    <ViewTransitionLink
+                      href={service.link}
+                      className="button-primary inline-flex items-center gap-2 self-start"
+                    >
+                      Learn More
+                      <ArrowRight className="h-5 w-5" />
+                    </ViewTransitionLink>
+                  </div>
                 </div>
                 <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-md">
                   <Image
