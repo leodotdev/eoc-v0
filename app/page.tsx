@@ -7,12 +7,19 @@ import { Button } from "@/components/ui/button";
 import InstagramGallery from "@/components/instagram-gallery";
 import { ViewTransitionLink } from "@/components/view-transition-link";
 import { ClientLogos } from "@/components/client-logos";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TestimonialCard } from "@/components/testimonial-card";
-import { YouTubeLite } from "@/components/youtube-lite";
 
 export default function Home() {
+  const playerRef = useRef<any>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const videoId = "sKw_ZBs08AU";
+
+  useEffect(() => {
+    // Set video as ready after a short delay to allow the iframe to load
+    const timer = setTimeout(() => setIsVideoReady(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Service categories
   const services = [
@@ -103,12 +110,13 @@ export default function Home() {
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div className="relative w-full h-full blur-[24px]">
-            <YouTubeLite
-              videoId="sKw_ZBs08AU"
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}&enablejsapi=0&origin=${encodeURIComponent(
+                window.location.origin
+              )}`}
               className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              autoplay={true}
-              playbackRate={0.5}
-              onReady={() => setIsVideoReady(true)}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              loading="lazy"
             />
           </div>
           {/* Dark overlay for better text readability */}
