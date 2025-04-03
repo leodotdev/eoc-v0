@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Instagram } from "lucide-react";
+import { ArrowRight, Check, Instagram, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import InstagramGallery from "@/components/instagram-gallery";
 import { ViewTransitionLink } from "@/components/view-transition-link";
 import { ClientLogos } from "@/components/client-logos";
 import { useEffect, useRef } from "react";
+import { TestimonialCard } from "@/components/testimonial-card";
 
 declare global {
   interface Window {
@@ -282,20 +283,27 @@ export default function Home() {
           <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
         </div>
 
-        <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-secondary p-6 rounded-lg shadow-sm">
-              <p className="italic text-muted-foreground mb-4">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <h4 className="font-semibold">{testimonial.author}</h4>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.company}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={index}
+                quote={testimonial.quote}
+                name={testimonial.author}
+                title={testimonial.company}
+              />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <ViewTransitionLink
+              href="/testimonials"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+            >
+              View All Testimonials
+              <ArrowRight className="h-4 w-4" />
+            </ViewTransitionLink>
+          </div>
         </div>
       </section>
 
