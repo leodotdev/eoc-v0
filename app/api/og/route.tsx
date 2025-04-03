@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
             justifyContent: "center",
             backgroundColor: "#F3978A",
             backgroundImage: "linear-gradient(135deg, #F3978A, #f5a99e)",
-            gap: "32px",
+            gap: "16px",
             padding: "64px",
           }}
         >
@@ -34,8 +34,8 @@ export async function GET(req: NextRequest) {
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="300"
-              height="300"
+              width="400"
+              height="400"
               style={{
                 objectFit: "contain",
               }}
