@@ -17,7 +17,7 @@ export function TestimonialCard({
   return (
     <div
       className={cn(
-        "relative flex flex-col bg-card rounded-xl p-6 border border-primary/10",
+        "relative flex flex-col bg-card rounded-xl p-6 border border-primary/10 h-full",
         className
       )}
     >
@@ -25,26 +25,24 @@ export function TestimonialCard({
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent" />
 
       {/* Content */}
-      <div className="relative">
+      <div className="relative flex flex-col h-full">
         {/* Quote icon */}
-        <div className="mb-4">
+        <div>
           <Quote className="h-8 w-8 text-primary/30" />
         </div>
 
         {/* Quote text */}
-        <blockquote className="mb-6">
+        <blockquote className="mt-4 flex-1">
           <p className="text-lg leading-relaxed text-card-foreground/80">
             "{quote}"
           </p>
         </blockquote>
 
         {/* Author info */}
-        <div className="mt-auto border-t border-primary/10 pt-4">
-          <div className="flex items-center gap-3">
-            <div>
-              <div className="font-medium text-card-foreground">{name}</div>
-              <div className="mt-1 text-sm text-muted-foreground">{title}</div>
-            </div>
+        <div className="mt-6 border-t border-primary/10 pt-4">
+          <div className="flex flex-col gap-1">
+            <div className="font-medium text-card-foreground">{name}</div>
+            <div className="text-sm text-muted-foreground">{title}</div>
           </div>
         </div>
       </div>

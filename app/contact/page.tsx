@@ -93,9 +93,9 @@ export default function ContactPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
-        <div className="container">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <div className="h-1 w-24 bg-white mb-8"></div>
+        <div className="container flex flex-col gap-6">
+          <h1 className="text-3xl md:text-5xl font-bold">Contact Us</h1>
+          <div className="h-1 w-24 bg-white"></div>
           <p className="text-xl max-w-3xl">
             Get in touch with us to discuss your event staffing or
             administrative needs.
@@ -107,13 +107,15 @@ export default function ContactPage() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-              <div className="h-1 w-16 bg-primary mb-8"></div>
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
+                <h2 className="text-2xl font-bold">Get In Touch</h2>
+                <div className="h-1 w-16 bg-primary"></div>
+              </div>
 
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="bg-secondary p-3 rounded-md mr-4">
+              <div className="flex flex-col gap-8">
+                <div className="flex items-start gap-4">
+                  <div className="bg-secondary p-3 rounded-md">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
@@ -127,8 +129,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-secondary p-3 rounded-md mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-secondary p-3 rounded-md">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
@@ -142,8 +144,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-secondary p-3 rounded-md mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-secondary p-3 rounded-md">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
@@ -152,8 +154,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-secondary p-3 rounded-md mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-secondary p-3 rounded-md">
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
@@ -164,8 +166,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-secondary p-3 rounded-md mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-secondary p-3 rounded-md">
                     <Facebook className="h-5 w-5" />
                   </div>
                   <div>
@@ -181,8 +183,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-secondary p-3 rounded-md mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-secondary p-3 rounded-md">
                     <Instagram className="h-5 w-5" />
                   </div>
                   <div>
@@ -200,23 +202,25 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <div className="h-1 w-16 bg-primary mb-8"></div>
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
+                <h2 className="text-2xl font-bold">Send Us a Message</h2>
+                <div className="h-1 w-16 bg-primary"></div>
+              </div>
 
               {formStatus.isSuccess && (
-                <Alert className="mb-6 bg-green-50 border-green-200 text-green-800">
+                <Alert className="bg-green-50 border-green-200 text-green-800">
                   <AlertDescription>{formStatus.message}</AlertDescription>
                 </Alert>
               )}
 
               {formStatus.isError && (
-                <Alert className="mb-6 bg-red-50 border-red-200 text-red-800">
+                <Alert className="bg-red-50 border-red-200 text-red-800">
                   <AlertDescription>{formStatus.message}</AlertDescription>
                 </Alert>
               )}
 
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -287,7 +291,7 @@ export default function ContactPage() {
 
                 <Button
                   type="submit"
-                  className="bg-primary text-primary-foreground"
+                  className="bg-primary text-primary-foreground w-fit"
                   disabled={formStatus.isSubmitting}
                 >
                   {formStatus.isSubmitting ? "Sending..." : "Send Message"}

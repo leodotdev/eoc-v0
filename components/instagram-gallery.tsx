@@ -95,12 +95,12 @@ const instagramPosts = [
 
 const InstagramGallery = () => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
       {instagramPosts.map((post) => (
         <Link
           key={post.id}
           href={post.postUrl}
-          className="aspect-square relative overflow-hidden group"
+          className="aspect-square relative overflow-hidden group rounded-md"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -108,14 +108,15 @@ const InstagramGallery = () => {
             src={post.imageUrl}
             alt={`Instagram post: ${post.caption}`}
             fill
-            className="rounded-sm object-cover transition-transform group-hover:scale-105"
+            className="object-cover transition-transform group-hover:scale-105"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-white">
-            <Instagram className="h-8 w-8 mb-3" />
-            <p className="text-sm text-center mb-2 line-clamp-2">
+            <Instagram className="h-8 w-8" />
+            <p className="text-sm text-center mt-3 line-clamp-3">
               {post.caption}
             </p>
-            <span className="text-xs mt-1 underline">View Post</span>
+            <span className="text-xs mt-2 underline">View Post</span>
           </div>
         </Link>
       ))}

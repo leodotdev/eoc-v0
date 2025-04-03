@@ -85,10 +85,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground pt-16 pb-8">
+    <footer className="bg-primary text-primary-foreground py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+          <div className="flex flex-col gap-6">
             <div className="relative h-16 w-48">
               <Image
                 src="/eoc-logo.png"
@@ -103,11 +103,11 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <h3 className="text-lg font-semibold">
               Events & Office Consultants
             </h3>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-3">
               <Link
                 href="/"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -135,9 +135,9 @@ export function Footer() {
             </nav>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <h3 className="text-lg font-semibold">Our Services</h3>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-3">
               <Link
                 href="/services"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -165,12 +165,12 @@ export function Footer() {
             </nav>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <h3 className="text-lg font-semibold">Contact</h3>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               <Link
                 href="tel:305-442-6000"
-                className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -179,7 +179,7 @@ export function Footer() {
               </Link>
               <Link
                 href="mailto:info@eocpeople.com"
-                className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -187,7 +187,7 @@ export function Footer() {
                 <span>info@eocpeople.com</span>
               </Link>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-5 mt-2">
               <Link
                 href="https://facebook.com"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -209,7 +209,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <h3 className="text-lg font-semibold">Get in touch</h3>
             {formStatus.isSuccess && (
               <Alert className="bg-green-800/20 border-green-800/30 text-white">
@@ -221,7 +221,7 @@ export function Footer() {
                 <AlertDescription>{formStatus.message}</AlertDescription>
               </Alert>
             )}
-            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <Input
                 name="name"
                 type="text"
@@ -258,7 +258,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 pt-8 text-center">
+        <div className="border-t border-primary-foreground/20 pt-8 flex justify-center">
           <p className="text-primary-foreground/60">
             &copy; {new Date().getFullYear()} Events & Office Consultants. All
             rights reserved.

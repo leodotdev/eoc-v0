@@ -92,7 +92,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Client Logos */}
-      <ClientLogos />
+      <ClientLogos className="py-16" />
     </main>
   );
 }
