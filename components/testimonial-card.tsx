@@ -17,7 +17,7 @@ export function TestimonialCard({
   return (
     <div
       className={cn(
-        "relative flex flex-col bg-card rounded-xl p-6 shadow-sm",
+        "relative flex flex-col bg-card rounded-xl p-6 border border-primary/10",
         className
       )}
     >
