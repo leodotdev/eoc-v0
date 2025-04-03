@@ -59,26 +59,16 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div
+              <TestimonialCard
                 key={index}
-                className="bg-secondary p-8 rounded-lg shadow-sm"
-              >
-                <blockquote className="mb-6">
-                  <p className=" text-foreground">"{testimonial.quote}"</p>
-                </blockquote>
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <h3 className="font-semibold text-lg">
-                    {testimonial.author}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.company}
-                  </p>
-                </div>
-              </div>
+                quote={testimonial.quote}
+                name={testimonial.author}
+                title={testimonial.company}
+              />
             ))}
           </div>
         </div>
