@@ -88,8 +88,8 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          <div className="space-y-4">
-            <div className="relative h-12 w-36 mb-4">
+          <div className="flex flex-col gap-4">
+            <div className="relative h-12 w-36">
               <Image
                 src="/eoc-logo.png"
                 alt="Events & Office Consultants"
@@ -103,11 +103,11 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold">
               Events & Office Consultants
             </h3>
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col gap-2">
               <Link
                 href="/"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -135,9 +135,9 @@ export function Footer() {
             </nav>
           </div>
 
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold">Our Services</h3>
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col gap-2">
               <Link
                 href="/services"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -165,19 +165,25 @@ export function Footer() {
             </nav>
           </div>
 
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold">Contact</h3>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
+            <div className="flex flex-col gap-2">
+              <Link
+                href="tel:305-442-6000"
+                className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
                 <Phone className="h-5 w-5" />
                 <span>305-442-6000</span>
-              </div>
-              <div className="flex items-center space-x-2">
+              </Link>
+              <Link
+                href="mailto:info@eocpeople.com"
+                className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
                 <Mail className="h-5 w-5" />
                 <span>info@eocpeople.com</span>
-              </div>
+              </Link>
             </div>
-            <div className="flex space-x-4 mt-4">
+            <div className="flex gap-4">
               <Link
                 href="https://facebook.com"
                 className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -195,7 +201,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold">Get in touch</h3>
             {formStatus.isSuccess && (
               <Alert className="bg-green-800/20 border-green-800/30 text-white">
@@ -207,11 +213,11 @@ export function Footer() {
                 <AlertDescription>{formStatus.message}</AlertDescription>
               </Alert>
             )}
-            <form className="space-y-3" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <Input
                 name="name"
                 type="text"
-                placeholder="Name *"
+                placeholder="Name*"
                 className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
                 required
                 value={formState.name}
@@ -220,7 +226,7 @@ export function Footer() {
               <Input
                 name="email"
                 type="email"
-                placeholder="Email *"
+                placeholder="Email*"
                 className="bg-primary-foreground/10 border-primary-foreground/20 placeholder:text-primary-foreground/60"
                 required
                 value={formState.email}
@@ -235,7 +241,7 @@ export function Footer() {
               />
               <Button
                 type="submit"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                className="bg-primary-foreground w-fit text-primary hover:bg-primary-foreground/90"
                 disabled={formStatus.isSubmitting}
               >
                 {formStatus.isSubmitting ? "Sending..." : "Submit"}

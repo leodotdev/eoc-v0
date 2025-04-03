@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, ChevronLeft, ChevronRight } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 // Real Instagram posts data from @eocpeople
 const instagramPosts = [
@@ -94,72 +94,31 @@ const instagramPosts = [
 ];
 
 const InstagramGallery = () => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const postsPerPage = 9;
-  const totalPages = Math.ceil(instagramPosts.length / postsPerPage);
-
-  const nextPage = () => {
-    setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
-  };
-
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
-  };
-
-  const visiblePosts = instagramPosts.slice(
-    currentPage * postsPerPage,
-    (currentPage + 1) * postsPerPage
-  );
-
   return (
-    <div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {visiblePosts.map((post) => (
-          <Link
-            key={post.id}
-            href={post.postUrl}
-            className="aspect-square relative overflow-hidden group"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={post.imageUrl}
-              alt={`Instagram post: ${post.caption}`}
-              fill
-              className="object-cover transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-white">
-              <Instagram className="h-8 w-8 mb-3" />
-              <p className="text-sm text-center mb-2 line-clamp-2">
-                {post.caption}
-              </p>
-              <span className="text-xs mt-1 underline">View Post</span>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {totalPages > 1 && (
-        <div className="flex justify-center mt-6 gap-2">
-          <button
-            onClick={prevPage}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
-            aria-label="Previous page"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <div className="flex items-center text-sm px-4">
-            Page {currentPage + 1} of {totalPages}
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {instagramPosts.map((post) => (
+        <Link
+          key={post.id}
+          href={post.postUrl}
+          className="aspect-square relative overflow-hidden group"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src={post.imageUrl}
+            alt={`Instagram post: ${post.caption}`}
+            fill
+            className="rounded-sm object-cover transition-transform group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-white">
+            <Instagram className="h-8 w-8 mb-3" />
+            <p className="text-sm text-center mb-2 line-clamp-2">
+              {post.caption}
+            </p>
+            <span className="text-xs mt-1 underline">View Post</span>
           </div>
-          <button
-            onClick={nextPage}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
-            aria-label="Next page"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-      )}
+        </Link>
+      ))}
     </div>
   );
 };

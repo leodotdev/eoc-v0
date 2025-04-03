@@ -4,6 +4,7 @@ import { ArrowRight, Check, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import InstagramGallery from "@/components/instagram-gallery";
 import { ViewTransitionLink } from "@/components/view-transition-link";
+import { ClientLogos } from "@/components/client-logos";
 
 export default function Home() {
   // Service categories
@@ -188,27 +189,7 @@ export default function Home() {
       </section>
 
       {/* Clients Section */}
-      <section className="py-16 bg-secondary">
-        <div className="container text-center mb-12">
-          <h2 className="section-heading">Our Clients</h2>
-          <div className="h-1 w-24 bg-primary mx-auto my-6"></div>
-        </div>
-
-        <div className="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-          {clients.map((client, index) => (
-            <div key={index} className="flex justify-center">
-              <div className="relative h-16 w-32">
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ClientLogos />
 
       {/* Instagram Section */}
       <section className="py-16 md:py-24 bg-white">

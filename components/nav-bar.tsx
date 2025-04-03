@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import { Menu, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ViewTransitionLink } from "@/components/view-transition-link";
@@ -28,6 +28,7 @@ export function NavBar() {
           href: "/services/administrative-professionals",
           label: "Administrative Professionals",
         },
+        { href: "/services/hospitality", label: "Hospitality" },
       ],
     },
     { href: "/testimonials", label: "Testimonials" },
@@ -35,7 +36,7 @@ export function NavBar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/90">
       <div className="container flex h-20 items-center">
         <div className="mr-4 flex items-center">
           <ViewTransitionLink href="/" className="flex items-center">
@@ -44,7 +45,7 @@ export function NavBar() {
                 src="/eoc-logo.png"
                 alt="Events & Office Consultants"
                 fill
-                className="object-contain"
+                className="object-contain brightness-0 invert"
                 priority
               />
             </div>
@@ -55,7 +56,7 @@ export function NavBar() {
           {routes.map((route) =>
             route.isDropdown ? (
               <DropdownMenu key={route.href}>
-                <DropdownMenuTrigger className="text-base font-medium nav-link inline-flex items-center gap-1 outline-none">
+                <DropdownMenuTrigger className="text-base font-medium text-primary-foreground/90 hover:text-primary-foreground inline-flex items-center gap-1 outline-none">
                   {route.label}
                   <svg
                     width="12"
@@ -99,28 +100,74 @@ export function NavBar() {
               <ViewTransitionLink
                 key={route.href}
                 href={route.href}
-                className="text-base font-medium nav-link"
+                className="text-base font-medium text-primary-foreground/90 hover:text-primary-foreground"
               >
                 {route.label}
               </ViewTransitionLink>
             )
           )}
+
+          <div className="flex items-center space-x-4 ml-4 border-l border-primary-foreground/20 pl-4">
+            <Link
+              href="tel:305-442-6000"
+              className="text-primary-foreground/90 p-2 hover:text-primary-foreground transition-colors"
+              title="Call us"
+            >
+              <Phone className="h-5 w-5" />
+              <span className="sr-only">Phone</span>
+            </Link>
+            <Link
+              href="mailto:info@eocpeople.com"
+              className="text-primary-foreground/90 p-2 hover:text-primary-foreground transition-colors"
+              title="Email us"
+            >
+              <Mail className="h-5 w-5" />
+              <span className="sr-only">Email</span>
+            </Link>
+            <Link
+              href="https://facebook.com/eocpeople"
+              className="text-primary-foreground/90 p-2 hover:text-primary-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Follow us on Facebook"
+            >
+              <Facebook className="h-5 w-5" />
+              <span className="sr-only">Facebook</span>
+            </Link>
+            <Link
+              href="https://instagram.com/eocpeople"
+              className="text-primary-foreground/90 p-2 hover:text-primary-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Follow us on Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+              <span className="sr-only">Instagram</span>
+            </Link>
+          </div>
         </nav>
 
         <Sheet>
           <SheetTrigger asChild className="md:hidden ml-auto">
-            <Button variant="ghost" size="icon">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-primary-foreground hover:bg-primary-foreground/10"
+            >
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="pr-0">
+          <SheetContent
+            side="right"
+            className="pr-0 bg-primary text-primary-foreground"
+          >
             <div className="relative h-12 w-36 mb-6">
               <Image
                 src="/eoc-logo.png"
                 alt="Events & Office Consultants"
                 fill
-                className="object-contain"
+                className="object-contain brightness-0 invert"
               />
             </div>
             <nav className="flex flex-col space-y-4">
@@ -129,16 +176,16 @@ export function NavBar() {
                   <div key={route.href} className="space-y-2">
                     <ViewTransitionLink
                       href={route.href}
-                      className="text-foreground/90 transition-colors hover:text-foreground font-medium"
+                      className="text-primary-foreground/90 transition-colors hover:text-primary-foreground font-medium"
                     >
                       {route.label}
                     </ViewTransitionLink>
-                    <div className="pl-4 space-y-2 border-l-2 border-gray-200">
+                    <div className="pl-4 space-y-2 border-l-2 border-primary-foreground/20">
                       {route.dropdownItems?.map((item) => (
                         <ViewTransitionLink
                           key={item.href}
                           href={item.href}
-                          className="text-foreground/70 transition-colors hover:text-foreground block text-sm"
+                          className="text-primary-foreground/70 transition-colors hover:text-primary-foreground block text-sm"
                         >
                           {item.label}
                         </ViewTransitionLink>
@@ -149,12 +196,51 @@ export function NavBar() {
                   <ViewTransitionLink
                     key={route.href}
                     href={route.href}
-                    className="text-foreground/90 transition-colors hover:text-foreground font-medium"
+                    className="text-primary-foreground/90 transition-colors hover:text-primary-foreground font-medium"
                   >
                     {route.label}
                   </ViewTransitionLink>
                 )
               )}
+
+              <div className="flex space-x-4 pt-4 border-t border-primary-foreground/20">
+                <Link
+                  href="tel:305-442-6000"
+                  className="p-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+                  title="Call us"
+                >
+                  <Phone className="h-5 w-5" />
+                  <span className="sr-only">Phone</span>
+                </Link>
+                <Link
+                  href="mailto:info@eocpeople.com"
+                  className="p-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+                  title="Email us"
+                >
+                  <Mail className="h-5 w-5" />
+                  <span className="sr-only">Email</span>
+                </Link>
+                <Link
+                  href="https://facebook.com/eocpeople"
+                  className="p-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow us on Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                  <span className="sr-only">Facebook</span>
+                </Link>
+                <Link
+                  href="https://instagram.com/eocpeople"
+                  className="p-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow us on Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                  <span className="sr-only">Instagram</span>
+                </Link>
+              </div>
             </nav>
           </SheetContent>
         </Sheet>

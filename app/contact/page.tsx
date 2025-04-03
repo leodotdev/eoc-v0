@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -117,7 +118,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium text-lg">Phone</h3>
-                    <p className="text-muted-foreground">305-442-6000</p>
+                    <Link
+                      href="tel:305-442-6000"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      305-442-6000
+                    </Link>
                   </div>
                 </div>
 
@@ -127,7 +133,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium text-lg">Email</h3>
-                    <p className="text-muted-foreground">info@eocpeople.com</p>
+                    <Link
+                      href="mailto:info@eocpeople.com"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      info@eocpeople.com
+                    </Link>
                   </div>
                 </div>
 
@@ -150,6 +161,40 @@ export default function ContactPage() {
                     <p className="text-muted-foreground">
                       Monday - Friday: 9:00 AM - 5:00 PM
                     </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-secondary p-3 rounded-md mr-4">
+                    <Facebook className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg">Facebook</h3>
+                    <Link
+                      href="https://facebook.com/eocpeople"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      @eocpeople
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-secondary p-3 rounded-md mr-4">
+                    <Instagram className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg">Instagram</h3>
+                    <Link
+                      href="https://instagram.com/eocpeople"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      @eocpeople
+                    </Link>
                   </div>
                 </div>
               </div>
