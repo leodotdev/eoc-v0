@@ -62,30 +62,32 @@ export function ClientLogos({ className }: ClientLogosProps) {
   return (
     <div className={cn("py-16", className)}>
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-medium text-center mb-10">
+        <h2 className="text-2xl font-medium text-center mb-12">
           Trusted by Industry Leaders
         </h2>
-        <div
-          className={cn(
-            "grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center"
-          )}
-        >
-          {clients.map((client) => (
-            <div
-              key={client.name}
-              className="flex items-center justify-center w-full"
-            >
-              <div className="relative w-full max-w-[180px] h-[60px]">
-                <Image
-                  src={client.logo || "/placeholder.svg"}
-                  alt={client.name}
-                  fill
-                  className="object-contain filter grayscale hover:grayscale-0"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                />
+        <div className="max-w-6xl mx-auto">
+          <div
+            className={cn(
+              "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center"
+            )}
+          >
+            {clients.map((client) => (
+              <div
+                key={client.name}
+                className="flex items-center justify-center w-full h-[80px]"
+              >
+                <div className="relative w-full max-w-[180px] h-[60px] mx-auto">
+                  <Image
+                    src={client.logo || "/placeholder.svg"}
+                    alt={client.name}
+                    fill
+                    className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
