@@ -14,8 +14,10 @@ export default function Home() {
   const playerRef = useRef<any>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const videoId = "sKw_ZBs08AU";
+  const [origin, setOrigin] = useState("");
 
   useEffect(() => {
+    setOrigin(window.location.origin);
     // Set video as ready after a short delay to allow the iframe to load
     const timer = setTimeout(() => setIsVideoReady(true), 1000);
     return () => clearTimeout(timer);
@@ -110,14 +112,16 @@ export default function Home() {
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <div className="relative w-full h-full blur-[24px]">
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}&enablejsapi=0&origin=${encodeURIComponent(
-                window.location.origin
-              )}`}
-              className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              loading="lazy"
-            />
+            {origin && (
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}&enablejsapi=0&origin=${encodeURIComponent(
+                  origin
+                )}`}
+                className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                loading="lazy"
+              />
+            )}
           </div>
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/70" />

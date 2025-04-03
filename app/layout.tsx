@@ -3,7 +3,6 @@ import "@/app/globals.css";
 import { Inter } from "next/font/google";
 import { NavBar } from "@/components/nav-bar";
 import { Footer } from "@/components/footer";
-import { CookieConsent } from "@/components/cookie-consent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -97,7 +96,6 @@ export default function RootLayout({
         <NavBar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
-        <CookieConsent />
       </body>
     </html>
   );
