@@ -116,10 +116,12 @@ export default function Home() {
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&mute=1&playsinline=1&rel=0&playlist=${videoId}&enablejsapi=0&origin=${encodeURIComponent(
                   origin
-                )}`}
+                )}&nocookie=1`}
                 className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 loading="lazy"
+                title="Background video"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             )}
           </div>

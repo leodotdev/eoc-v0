@@ -83,6 +83,10 @@ const nextConfig = {
           {
             key: 'X-Robots-Tag',
             value: 'index, follow'
+          },
+          {
+            key: 'Set-Cookie',
+            value: 'SameSite=Strict; Secure'
           }
         ]
       }
