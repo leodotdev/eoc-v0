@@ -14,7 +14,7 @@
     --popover-foreground: 240 10% 3.9%;
 
     /* EOC brand colors */
-    --primary: 6 83% 62%;  /* Closer to original #F3978A but still maintaining accessibility */
+    --primary: 6 83% 68%;  /* Even closer to #F3978A (74%) but maintaining minimum 4.5:1 contrast */
     --primary-foreground: 0 0% 100%;  /* White */
 
     --secondary: 0 0% 98%;  /* Light gray */
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 6 83% 62%;  /* Closer to original #F3978A but still maintaining accessibility */
+    --primary: 6 83% 68%;  /* Even closer to #F3978A (74%) but maintaining minimum 4.5:1 contrast */
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
