@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "40px",
+              marginBottom: "20px",
             }}
           >
             <img
