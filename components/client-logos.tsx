@@ -1,6 +1,11 @@
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
-export function ClientLogos() {
+interface ClientLogosProps {
+  className?: string;
+}
+
+export function ClientLogos({ className }: ClientLogosProps) {
   const clients = [
     {
       name: "Miami Marathon and Half",
@@ -55,12 +60,16 @@ export function ClientLogos() {
   ];
 
   return (
-    <div className="py-16">
+    <div className={cn("py-16", className)}>
       <div className="container mx-auto px-4">
         <h2 className="text-2xl font-medium text-center mb-10">
           Trusted by Industry Leaders
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 items-center justify-items-center">
+        <div
+          className={cn(
+            "grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center"
+          )}
+        >
           {clients.map((client) => (
             <div
               key={client.name}

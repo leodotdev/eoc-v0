@@ -100,7 +100,7 @@ export default function ConventionsEventsPage() {
           </h2>
           <div className="h-1 w-24 bg-primary mx-auto mb-16"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <ViewTransitionLink
               href="/services/brand-ambassadors"
               className="bg-white p-8 group rounded-lg shadow-sm"
@@ -123,19 +123,6 @@ export default function ConventionsEventsPage() {
               </h3>
               <p className="text-muted-foreground mb-6">
                 For teams who need skilled talent and easy integration.
-              </p>
-              <p className="text-primary group-hover:underline">Learn More →</p>
-            </ViewTransitionLink>
-            <ViewTransitionLink
-              href="/services/hospitality"
-              className="bg-white p-8 group rounded-lg shadow-sm"
-            >
-              <h3 className="text-xl font-semibold mb-4 text-primary">
-                Hospitality
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                For professionals who are looking for exceptional guest
-                experiences and top-tier hospitality staffing solutions.
               </p>
               <p className="text-primary group-hover:underline">Learn More →</p>
             </ViewTransitionLink>

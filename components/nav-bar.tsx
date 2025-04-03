@@ -28,7 +28,6 @@ export function NavBar() {
           href: "/services/administrative-professionals",
           label: "Administrative Professionals",
         },
-        { href: "/services/hospitality", label: "Hospitality" },
       ],
     },
     { href: "/testimonials", label: "Testimonials" },
@@ -40,7 +39,7 @@ export function NavBar() {
       <div className="container flex h-20 items-center">
         <div className="mr-4 flex items-center">
           <ViewTransitionLink href="/" className="flex items-center">
-            <div className="relative h-12 w-36">
+            <div className="relative h-16 w-48">
               <Image
                 src="/eoc-logo.png"
                 alt="Events & Office Consultants"
@@ -162,7 +161,7 @@ export function NavBar() {
             side="right"
             className="pr-0 bg-primary text-primary-foreground"
           >
-            <div className="relative h-12 w-36 mb-6">
+            <div className="relative h-16 w-48 mb-6">
               <Image
                 src="/eoc-logo.png"
                 alt="Events & Office Consultants"
