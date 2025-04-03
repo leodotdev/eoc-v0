@@ -56,9 +56,13 @@ export const metadata = {
     },
   },
   icons: {
-    icon: "/eoc-logo.png",
-    shortcut: "/eoc-logo.png",
-    apple: "/eoc-logo.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+    other: {
+      rel: "icon",
+      url: "/favicon.png",
+    },
   },
   verification: {
     google: "your-google-site-verification", // Add your Google verification code
