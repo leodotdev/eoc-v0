@@ -27,14 +27,14 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "40px",
+              marginBottom: "12px",
             }}
           >
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="400"
-              height="400"
+              width="600"
+              height="600"
               style={{
                 objectFit: "contain",
               }}
@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
               fontSize: 64,
               fontStyle: "normal",
               color: "white",
-              marginTop: "20px",
+              marginTop: "12px",
               padding: "0 120px",
               textAlign: "center",
               fontWeight: 600,
@@ -60,7 +60,7 @@ export async function GET(req: NextRequest) {
               fontSize: 32,
               fontStyle: "normal",
               color: "white",
-              marginTop: "20px",
+              marginTop: "12px",
               padding: "0 120px",
               textAlign: "center",
               opacity: 0.9,
