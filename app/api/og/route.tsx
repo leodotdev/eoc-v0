@@ -20,6 +20,8 @@ export async function GET(req: NextRequest) {
             justifyContent: "center",
             backgroundColor: "#F3978A",
             backgroundImage: "linear-gradient(135deg, #F3978A, #f5a99e)",
+            gap: "32px",
+            padding: "64px",
           }}
         >
           <div
@@ -27,14 +29,13 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "10px",
             }}
           >
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="400"
-              height="400"
+              width="300"
+              height="300"
               style={{
                 objectFit: "contain",
               }}
@@ -43,28 +44,34 @@ export async function GET(req: NextRequest) {
           <div
             style={{
               display: "flex",
-              fontSize: 60,
-              fontStyle: "normal",
-              color: "white",
-              marginTop: "10px",
-              padding: "0 120px",
-              textAlign: "center",
-              fontWeight: 600,
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "16px",
             }}
           >
-            {title}
-          </div>
-          <div
-            style={{
-              fontSize: 32,
-              fontStyle: "normal",
-              color: "rgba(255, 255, 255, 0.9)",
-              marginTop: "10px",
-              padding: "0 120px",
-              textAlign: "center",
-            }}
-          >
-            Personalized Staffing Experience
+            <div
+              style={{
+                display: "flex",
+                fontSize: 60,
+                fontStyle: "normal",
+                color: "white",
+                textAlign: "center",
+                fontWeight: 600,
+                maxWidth: "900px",
+              }}
+            >
+              {title}
+            </div>
+            <div
+              style={{
+                fontSize: 32,
+                fontStyle: "normal",
+                color: "rgba(255, 255, 255, 0.9)",
+                textAlign: "center",
+              }}
+            >
+              Personalized Staffing Experience
+            </div>
           </div>
         </div>
       ),
