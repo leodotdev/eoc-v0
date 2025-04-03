@@ -33,8 +33,8 @@ export async function GET(req: NextRequest) {
             <img
               src={`${req.nextUrl.origin}/eoc-logo.png`}
               alt="EOC Logo"
-              width="200"
-              height="200"
+              width="400"
+              height="400"
               style={{
                 objectFit: "contain",
               }}
