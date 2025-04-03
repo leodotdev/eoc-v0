@@ -18,8 +18,9 @@ export async function GET(req: NextRequest) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#F3978A",
-            backgroundImage: "linear-gradient(135deg, #F3978A, #f5a799)",
+            backgroundColor: "#1a1a1a",
+            backgroundImage:
+              "linear-gradient(to bottom right, #1a1a1a, #2a2a2a)",
           }}
         >
           <div
@@ -27,6 +28,7 @@ export async function GET(req: NextRequest) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              marginBottom: "20px",
             }}
           >
             <img
@@ -34,23 +36,36 @@ export async function GET(req: NextRequest) {
               alt="EOC Logo"
               width="600"
               height="600"
-              style={{
-                objectFit: "contain",
-              }}
             />
           </div>
           <div
             style={{
               display: "flex",
-              fontSize: 64,
+              fontSize: 60,
               fontStyle: "normal",
-              color: "white",
+              color: "transparent",
+              marginTop: "20px",
               padding: "0 120px",
               textAlign: "center",
-              fontWeight: 600,
+              backgroundImage:
+                "linear-gradient(to bottom right, #ffffff, #cccccc)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
             }}
           >
             {title}
+          </div>
+          <div
+            style={{
+              fontSize: 30,
+              fontStyle: "normal",
+              color: "#cccccc",
+              marginTop: "20px",
+              padding: "0 120px",
+              textAlign: "center",
+            }}
+          >
+            Personalized Staffing Experience
           </div>
         </div>
       ),
