@@ -251,7 +251,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-muted-foreground">{service.description}</p>
-              <div className="mt-4 text-primary flex items-center gap-1 text-sm font-medium">
+              <div className="mt-4 text-primary flex items-center gap-1 text-sm font-medium group-hover:underline">
                 Learn More
                 <ArrowRight className="h-4 w-4" />
               </div>
