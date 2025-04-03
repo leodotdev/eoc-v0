@@ -92,21 +92,25 @@ export default function Home() {
       icon: "/public/icons/conventions.svg",
       description:
         "Professional staff for conferences, trade shows and special events",
+      link: "/services/conventions-events",
     },
     {
       title: "Administrative Professionals",
       icon: "/public/icons/administrative.svg",
       description: "Skilled administrative support for your office needs",
+      link: "/services/administrative-professionals",
     },
     {
       title: "Brand Ambassadors",
       icon: "/public/icons/brand.svg",
       description: "Talented representatives to promote your brand",
+      link: "/services/brand-ambassadors",
     },
     {
       title: "Hospitality",
       icon: "/public/icons/hospitality.svg",
       description: "Exceptional service staff for hospitality events",
+      link: "/services",
     },
   ];
 
@@ -237,16 +241,21 @@ export default function Home() {
 
         <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div
+            <ViewTransitionLink
               key={index}
-              className="bg-secondary rounded-lg p-6 text-center flex flex-col items-center"
+              href={service.link}
+              className="group bg-secondary rounded-lg p-6 text-center flex flex-col items-center transition-colors hover:bg-secondary/80"
             >
               <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl font-bold">{index + 1}</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-muted-foreground">{service.description}</p>
-            </div>
+              <div className="mt-4 text-primary flex items-center gap-1 text-sm font-medium">
+                Learn More
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </ViewTransitionLink>
           ))}
         </div>
       </section>
